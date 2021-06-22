@@ -24,6 +24,7 @@
     <h2>Events in Action</h2>
     <button v-on:click="addCounter(3)">Add</button>
     <button v-on:click="removeCounter(4)">Remove</button>
+    <p v-once>result: {{ counter }}</p>
     <p>result: {{ counter }}</p>
     <input type="text"
       v-on:input="setName($event, 'Ted')"
