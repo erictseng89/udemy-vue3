@@ -17,13 +17,23 @@
 </head>
 
 <body>
-  <header>
-    <h1>Vue Course Goals</h1>
-  </header>
-  <section id="user-goal">
-    <h2>My Course Goal</h2>
-    <p v-html="courseGoalA"></p>
-    <p><a v-bind:href="vueLink">Link</a></p>
+  <section id="assignment">
+    <!-- 1) Output your name -->
+    <h2>{{ name }}</h2>
+    <!-- 2) Output your age -->
+    <p>{{ age }}</p>
+    <!-- 3) Output your age + 5 -->
+    <p>{{ name + 5 }}</p>
+    <!-- 4) Output a random number (0 to 1) -->
+    <p>{{ randNumber }}</p>
+    <p>{{ randMethod() }}</p>
+    <div>
+      <!-- 5) Display some image you found via Google -->
+      <img v-bind:src="link" />
+    </div>
+    <!-- 6) Prepopulate the input field with your name via the "value" attribute -->
+    <input type="text"
+      v-bind:value="name" />
   </section>
 </body>
 
