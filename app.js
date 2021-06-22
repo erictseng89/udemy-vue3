@@ -2,7 +2,8 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      confirmedName: '',
     }
   },
   methods: {
@@ -14,7 +15,14 @@ const app = Vue.createApp({
     },
     setName(event, lastName) {
       this.name = event.target.value + ' ' + lastName;
+    },
+    anyMethod(event) {
+      alert('no submissions');
+    },
+    enterName(event) {
+      this.confirmedName = event.target.value + this.name;
     }
+
   }
 })
 
