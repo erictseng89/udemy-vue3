@@ -27,8 +27,8 @@
     <p v-once>result: {{ counter }}</p>
     <p>result: {{ counter }}</p>
     <input type="text"
-      v-on:input="setName($event, 'Ted')"
-      v-on:keypress.enter="enterName" />
+      v-model="confirmedName" />
+    <button v-on:click="resetName">Reset Name</button>
     <p>Your Name: {{ confirmedName }}</p>
     <form v-on:submit.prevent="anyMethod">
       <input type="text"
