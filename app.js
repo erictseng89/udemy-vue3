@@ -1,11 +1,16 @@
 const app = Vue.createApp({
   data() {
     return {
-      counter: 0
+      counter: 0,
     }
   },
   methods: {
-
+    addCounter() {
+      this.counter++;
+    },
+    removeCounter() {
+      this.counter--;
+    }
   }
 })
 
