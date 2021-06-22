@@ -11,22 +11,19 @@ const app = Vue.createApp({
   },
   watch: {
     resultMessage() {
-      setTimeout(this.setZero(), 5000);
+      setTimeout(this.setZero, 5000);
     }
   },
-  conputed: {
-    // result() {
-    //   if (this.number === 37) {
-    //     this.resultMessage = this.number;
-    //   } else if (this.number > 37) {
-    //     this.resultMessage = this.message[1];
-    //   } else {
-    //     this.resultMessage = this.message[0];
-    //   }
-    //   return this.resultMessage;
-    // }
+  computed: {
     result() {
-      return '100';
+      if (this.number > 37) {
+        this.resultMessage = this.message[1];
+      } else if (this.number < 37) {
+        this.resultMessage = this.message[0];
+      } else if (this.number === 37) {
+        this.resultMessage = '37';
+      }
+      return this.resultMessage;
     }
   },
   methods: {
