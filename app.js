@@ -6,24 +6,29 @@ const app = Vue.createApp({
         'Not there yet',
         'Too much!',
       ],
-      resultMessage: ''
     }
   },
+  /**
+   * You can watch computed properties as well as data properties. Use the const that =
+   * this trick to use 'this' in nested functions.
+   */
   watch: {
-    resultMessage() {
-      setTimeout(this.setZero, 5000);
+    result() {
+      const that = this;
+      setTimeout(() => {
+        that.number = 0;
+      }, 5000);
     }
   },
   computed: {
     result() {
-      if (this.number > 37) {
-        this.resultMessage = this.message[1];
-      } else if (this.number < 37) {
-        this.resultMessage = this.message[0];
+      if (this.number < 37) {
+        return this.message[0];
       } else if (this.number === 37) {
-        this.resultMessage = '37';
+        return this.number;
+      } else {
+        return this.message[1];
       }
-      return this.resultMessage;
     }
   },
   methods: {
@@ -32,9 +37,6 @@ const app = Vue.createApp({
     },
     addOne() {
       this.number = this.number + 1;
-    },
-    setZero() {
-      this.number = 0;
     },
   }
 });
