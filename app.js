@@ -1,29 +1,21 @@
 const app = Vue.createApp({
   data() {
     return {
-      counter: 10,
-      name: '',
-      confirmedName: '',
+      text1: '',
+      text2: '',
     }
   },
   methods: {
-    addCounter(value) {
-      this.counter = this.counter + value;
+    alert() {
+      alert('alert');
     },
-    removeCounter(value) {
-      this.counter = this.counter - value;
+    changeText1(event) {
+      this.text1 = event.target.value;
     },
-    setName(event, lastName) {
-      this.name = event.target.value + ' ' + lastName;
-    },
-    anyMethod(event) {
-      alert('no submissions');
-    },
-    enterName(event) {
-      this.confirmedName = event.target.value + this.name;
+    changeText2(event) {
+      this.text2 = event.target.value;
     }
-
   }
 })
 
-app.mount('#events');
+app.mount('#assignment');
