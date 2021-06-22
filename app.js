@@ -6,6 +6,15 @@ const app = Vue.createApp({
       confirmedName: '',
     }
   },
+  computed: {
+    fullname() {
+      console.log('running again');
+      if (this.confirmedName === '') {
+        return '';
+      }
+      return `${this.confirmedName} LastName`;
+    }
+  },
   methods: {
     addCounter(value) {
       this.counter = this.counter + value;
@@ -24,7 +33,7 @@ const app = Vue.createApp({
     },
     resetName() {
       this.confirmedName = '';
-    }
+    },
   }
 })
 

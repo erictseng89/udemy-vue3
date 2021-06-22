@@ -29,7 +29,7 @@
     <input type="text"
       v-model="confirmedName" />
     <button v-on:click="resetName">Reset Name</button>
-    <p>Your Name: {{ confirmedName }}</p>
+    <p>Your Name: {{ fullname }}</p>
     <form v-on:submit.prevent="anyMethod">
       <input type="text"
         name=""
