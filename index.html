@@ -22,15 +22,15 @@
   </header>
   <section id="events">
     <h2>Events in Action</h2>
-    <button v-on:click="addCounter(3)">Add</button>
-    <button v-on:click="removeCounter(4)">Remove</button>
+    <button @click="addCounter(3)">Add</button>
+    <button @click="removeCounter(4)">Remove</button>
     <p v-once>result: {{ counter }}</p>
     <p>result: {{ counter }}</p>
     <input type="text"
       v-model="confirmedName" />
-    <button v-on:click="resetName">Reset Name</button>
+    <button @click="resetName">Reset Name</button>
     <p>Your Name: {{ fullname }}</p>
-    <form v-on:submit.prevent="anyMethod">
+    <form @submit.prevent="anyMethod">
       <input type="text"
         name=""
         id="">
