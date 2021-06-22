@@ -1,2 +1,8 @@
 {
+  "javascript.suggest.enabled": true,
+  "eslint.validate": [
+    "javascript",
+    "vue"
+  ],
+  "editor.acceptSuggestionOnCommitCharacter": false,
 }
