@@ -1,47 +1,45 @@
 const app = Vue.createApp({
   data() {
     return {
-      counter: 10,
-      name: '',
-      confirmedName: '',
+      number: 0,
+      message: [
+        'Not there yet',
+        'Too much!',
+      ],
+      resultMessage: ''
     }
   },
   watch: {
-    counter(value) {
-      if (value > 50) {
-        this.counter = 0;
-      };
-    },
+    resultMessage() {
+      setTimeout(this.setZero(), 5000);
+    }
   },
-  computed: {
-    fullname() {
-      console.log('running again');
-      if (this.confirmedName === '') {
-        return '';
-      }
-      return `${this.confirmedName} LastName`;
+  conputed: {
+    // result() {
+    //   if (this.number === 37) {
+    //     this.resultMessage = this.number;
+    //   } else if (this.number > 37) {
+    //     this.resultMessage = this.message[1];
+    //   } else {
+    //     this.resultMessage = this.message[0];
+    //   }
+    //   return this.resultMessage;
+    // }
+    result() {
+      return '100';
     }
   },
   methods: {
-    addCounter(value) {
-      this.counter = this.counter + value;
+    addFive() {
+      this.number = this.number + 5;
     },
-    removeCounter(value) {
-      this.counter = this.counter - value;
+    addOne() {
+      this.number = this.number + 1;
     },
-    setName(event, lastName) {
-      this.name = event.target.value;
-    },
-    anyMethod(event) {
-      alert('no submissions');
-    },
-    enterName(event) {
-      this.confirmedName = event.target.value;
-    },
-    resetName() {
-      this.confirmedName = '';
+    setZero() {
+      this.number = 0;
     },
   }
-})
+});
 
-app.mount('#events');
+app.mount('#assignment');

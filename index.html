@@ -18,24 +18,16 @@
 
 <body>
   <header>
-    <h1>Vue Events</h1>
+    <h1>Reactivity in Action</h1>
   </header>
-  <section id="events">
-    <h2>Events in Action</h2>
-    <button @click="addCounter(3)">Add</button>
-    <button @click="removeCounter(4)">Remove</button>
-    <p v-once>result: {{ counter }}</p>
-    <p>result: {{ counter }}</p>
-    <input type="text"
-      v-model="confirmedName" />
-    <button @click="resetName">Reset Name</button>
-    <p>Your Name: {{ fullname }}</p>
-    <form @submit.prevent="anyMethod">
-      <input type="text"
-        name=""
-        id="">
-      <button>Submit</button>
-    </form>
+  <section id="assignment">
+    <button @click="addFive">Add 5</button>
+    <button @click="addOne">Add 1</button>
+    <!-- 1) Connect the buttons and calculate a value (a number) -->
+    <!-- Show "Not there yet" until you reach a result of exactly 37 -->
+    <!-- Show "Too much!" if the result is greater than 37 -->
+    <p>{{ result }}</p>
+    <!-- 2) Watch for changes in "result" and reset the value to 0 after 5 seconds -->
   </section>
 </body>
 
