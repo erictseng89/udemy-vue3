@@ -25,26 +25,48 @@
             class="container">
             <h2>Monster Health</h2>
             <div class="healthbar">
-                <div class="healthbar__value"></div>
+                <div class="healthbar__value"
+                    :style="monsterHealthStyle"></div>
             </div>
         </section>
         <section id="player"
             class="container">
             <h2>Your Health</h2>
             <div class="healthbar">
-                <div class="healthbar__value"></div>
+                <div class="healthbar__value"
+                    :style="playerHealthStyle"></div>
             </div>
         </section>
-        <section id="controls">
-            <button>ATTACK</button>
-            <button>SPECIAL ATTACK</button>
-            <button>HEAL</button>
-            <button>SURRENDER</button>
+        <section class="container"
+            v-if="gameOverMessage">
+            <h2>{{ gameOverMessage }}</h2>
+            <button @click="startNewGame">Start New Game</button>
+        </section>
+        <section id="controls"
+            v-else>
+            <button @click="attackMonster('normal')">ATTACK</button>
+            <button :disabled="mayUseSpecialAttack"
+                @click="attackMonster('special')">SPECIAL ATTACK</button>
+            <button @click="healPlayer">HEAL</button>
+            <button @click="surrender">SURRENDER</button>
         </section>
         <section id="log"
             class="container">
             <h2>Battle Log</h2>
-            <ul></ul>
+            <ul>
+                <li v-for="turn in battleLog"
+                    :key="turn">
+                    <span :class="{'log--player': turn.actor === 'player', 'log--monster':
+                    turn.actor === 'monster'}">
+                        {{ turn.actor === 'player' ? 'Player ' : turn.actor === 'monster' ?
+                        'Monster ' : '' }}</span>
+                    <span v-if="turn.action === 'heal'"
+                        class="log--heal"> heals themselves for
+                        <span class="log--heal">{{ turn.actionValue }}</span></span>
+                    <span v-else>{{ turn.action }}
+                        <span class="log--damage">{{ turn.actionValue }}</span></span>
+                </li>
+            </ul>
         </section>
     </div>
 </body>
