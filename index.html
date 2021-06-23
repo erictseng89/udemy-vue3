@@ -26,7 +26,7 @@
       v-model="enteredGoalsValue" />
     <button @click="addGoals">Add Goal</button>
     <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
-    <ul>
+    <ul v-else>
       <li>Goal</li>
     </ul>
   </section>
