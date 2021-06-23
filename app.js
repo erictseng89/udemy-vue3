@@ -5,6 +5,22 @@ const app = Vue.createApp({
       text2: '',
     }
   },
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        this.counter = 0;
+      };
+    },
+  },
+  computed: {
+    fullname() {
+      console.log('running again');
+      if (this.confirmedName === '') {
+        return '';
+      }
+      return `${this.confirmedName} LastName`;
+    }
+  },
   methods: {
     alert() {
       alert('alert');
@@ -12,9 +28,18 @@ const app = Vue.createApp({
     changeText1(event) {
       this.text1 = event.target.value;
     },
-    changeText2(event) {
-      this.text2 = event.target.value;
-    }
+    setName(event, lastName) {
+      this.name = event.target.value;
+    },
+    anyMethod(event) {
+      alert('no submissions');
+    },
+    enterName(event) {
+      this.confirmedName = event.target.value;
+    },
+    resetName() {
+      this.confirmedName = '';
+    },
   }
 })
 

@@ -20,20 +20,22 @@
   <header>
     <h1>Events</h1>
   </header>
-  <section id="assignment">
-    <h2>Event Practice</h2>
-    <!-- 1) Show an alert (any text of your choice) when the button is pressed -->
-    <button v-on:click="alert">Show Alert</button>
-    <hr />
-    <!-- 2) Register the user input on "keydown" and output it in the paragraph (hint: event.target.value helps) -->
+  <section id="events">
+    <h2>Events in Action</h2>
+    <button @click="addCounter(3)">Add</button>
+    <button @click="removeCounter(4)">Remove</button>
+    <p v-once>result: {{ counter }}</p>
+    <p>result: {{ counter }}</p>
     <input type="text"
-      v-on:keydown="changeText1" />
-    <p>{{ text1 }}</p>
-    <hr />
-    <!-- 3) Repeat 2) but only output the entered value if the ENTER key was pressed -->
-    <input type="text"
-      v-on:keydown.enter="changeText2" />
-    <p>{{ text2 }}</p>
+      v-model="confirmedName" />
+    <button @click="resetName">Reset Name</button>
+    <p>Your Name: {{ fullname }}</p>
+    <form @submit.prevent="anyMethod">
+      <input type="text"
+        name=""
+        id="">
+      <button>Submit</button>
+    </form>
   </section>
 </body>
 
