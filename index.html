@@ -18,16 +18,26 @@
 
 <body>
   <header>
-    <h1>Reactivity in Action</h1>
+    <h1>Vue Dynamic Styling</h1>
   </header>
-  <section id="assignment">
-    <button @click="addFive">Add 5</button>
-    <button @click="addOne">Add 1</button>
-    <!-- 1) Connect the buttons and calculate a value (a number) -->
-    <!-- Show "Not there yet" until you reach a result of exactly 37 -->
-    <!-- Show "Too much!" if the result is greater than 37 -->
-    <p>Result: {{ result }}</p>
-    <!-- 2) Watch for changes in "result" and reset the value to 0 after 5 seconds -->
+  <section id="styling">
+    <!--
+      This uses the v-bind which transforms the "" value into a javascript environment.
+      <div class="demo"
+      :class="boxASelected ? 'active' : ''"
+      @click="selectBox('A')"></div> -->
+    <!--
+      ! This uses an object with key/value where value is a boolean   
+      <div :class="{demo: true, active: boxASelected}"
+      @click="selectBox('A')"></div> -->
+    <div :class="{demo: true, computedA}"
+      @click="selectBox('A')"></div>
+    <div class="demo"
+      :style="{borderColor: boxBSelected ? 'red' : '#ccc'}"
+      @click="selectBox('B')"></div>
+    <div class="demo"
+      :style="{borderColor: boxCSelected ? 'red' : '#ccc'}"
+      @click="selectBox('C')"></div>
   </section>
 </body>
 
