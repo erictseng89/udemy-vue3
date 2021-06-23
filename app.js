@@ -1,46 +1,44 @@
 const app = Vue.createApp({
   data() {
     return {
-      text1: '',
-      text2: '',
+      number: 0,
+      message: [
+        'Not there yet',
+        'Too much!',
+      ],
     }
   },
+  /**
+   * You can watch computed properties as well as data properties. Use the const that =
+   * this trick to use 'this' in nested functions.
+   */
   watch: {
-    counter(value) {
-      if (value > 50) {
-        this.counter = 0;
-      };
-    },
+    result() {
+      const that = this;
+      setTimeout(() => {
+        that.number = 0;
+      }, 5000);
+    }
   },
   computed: {
-    fullname() {
-      console.log('running again');
-      if (this.confirmedName === '') {
-        return '';
+    result() {
+      if (this.number < 37) {
+        return this.message[0];
+      } else if (this.number === 37) {
+        return this.number;
+      } else {
+        return this.message[1];
       }
-      return `${this.confirmedName} LastName`;
     }
   },
   methods: {
-    alert() {
-      alert('alert');
+    addFive() {
+      this.number = this.number + 5;
     },
-    changeText1(event) {
-      this.text1 = event.target.value;
-    },
-    setName(event, lastName) {
-      this.name = event.target.value;
-    },
-    anyMethod(event) {
-      alert('no submissions');
-    },
-    enterName(event) {
-      this.confirmedName = event.target.value;
-    },
-    resetName() {
-      this.confirmedName = '';
+    addOne() {
+      this.number = this.number + 1;
     },
   }
-})
+});
 
 app.mount('#assignment');
