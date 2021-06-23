@@ -1,29 +1,15 @@
 const app = Vue.createApp({
   data() {
     return {
-      inputA: '',
-      inputB: '',
-      visible: true,
-    }
-  },
-  computed: {
-    styleA() {
-      return this.inputA === 'user1' ? 'user1' : this.inputA === 'user2' ? 'user2' : '';
-    },
-    styleB() {
-      return this.visible ? 'visible' : 'hidden';
-    }
-  },
-  computed: {
-    computedA() {
-      return { active: this.boxASelected };
-    }
+      goals: [],
+      enteredGoalsValue: '',
+    };
   },
   methods: {
-    styleButtonB() {
-      this.visible = !this.visible;
+    addGoals() {
+      this.goals.push(this.enteredGoalsValue);
     }
   }
-})
+});
 
-app.mount('#assignment');
+app.mount('#user-goals');
