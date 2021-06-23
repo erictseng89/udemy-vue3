@@ -34,3 +34,14 @@ header {
   margin: 16px;
   border: 2px dashed #ccc;
 }
+
+/* 
+  ! Add new class active.
+ */
+.active {
+  border-color: red;
+}
+
+.salmon {
+  background-color: salmon;
+}

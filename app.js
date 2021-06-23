@@ -6,10 +6,14 @@ const app = Vue.createApp({
       boxCSelected: false,
     };
   },
+  computed: {
+    computedA() {
+      return { active: this.boxASelected };
+    }
+  },
   methods: {
     selectBox(box) {
       if (box === 'A') {
-        console.log('triggered');
         this.boxASelected = true;
       } else if (box === 'B') {
         this.boxBSelected = true;
