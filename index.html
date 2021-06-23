@@ -18,26 +18,36 @@
 
 <body>
   <header>
-    <h1>Vue Dynamic Styling</h1>
+    <h1>Vue Styling</h1>
   </header>
-  <section id="styling">
-    <!--
-      This uses the v-bind which transforms the "" value into a javascript environment.
-      <div class="demo"
-      :class="boxASelected ? 'active' : ''"
-      @click="selectBox('A')"></div> -->
-    <!--
-      ! This uses an object with key/value where value is a boolean   
-      <div :class="{demo: true, active: boxASelected}"
-      @click="selectBox('A')"></div> -->
-    <div :class="{demo: true, computedA}"
-      @click="selectBox('A')"></div>
-    <div class="demo"
-      :style="{borderColor: boxBSelected ? 'red' : '#ccc'}"
-      @click="selectBox('B')"></div>
-    <div class="demo"
-      :style="{borderColor: boxCSelected ? 'red' : '#ccc'}"
-      @click="selectBox('C')"></div>
+  <section id="assignment">
+    <!-- 1) Fetch the user input and use it as a CSS class -->
+    <!-- The entered class should be added to the below paragraph -->
+
+    <!-- ! Use v-model to sync this input element to the data property 'inputA' -->
+    <input type="text"
+      v-model="inputA" />
+
+    <!-- (available classes: "user1", "user2") -->
+
+    <!-- ! Use a computed property to determine if the input is 'user1' or 'user2'  -->
+    <p :class="[styleA, styleB]">
+      Style me!
+    </p>
+
+    <!-- ! Bind the button to a click event for a method controllign visibility. -->
+    <!-- ! visible will control the class for styleB -->
+    <button @click="styleButtonB">Toggle Paragraph</button>
+
+    <!-- 2) Use the "visible" and "hidden" classes to show/ hide the above paragraph -->
+    <!-- Clicking the button should toggle between the two options -->
+
+    <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
+
+    <!-- ! Dynamic inline using a v-model with a data property. -->
+    <input type="text"
+      v-model="inputB" />
+    <p :style="{backgroundColor: inputB}">Style me inline!</p>
   </section>
 </body>
 
