@@ -18,23 +18,27 @@
 
 <body>
   <header>
-    <h1>Vue Course Goals</h1>
+    <h1>Vue Lists and Conditional Content</h1>
   </header>
-  <section id="user-goals">
-    <h2>My course goals</h2>
+  <section id="assignment">
+    <h2>Assignment</h2>
+    <!-- 1) Add code to manage a list of tasks in a Vue app -->
+    <!-- When clicking "Add Task" a new task with the entered text should be added -->
+
+    <!-- ! Use v-model and @click to add enteredTaskValue to task array. -->
     <input type="text"
-      v-model="enteredGoalsValue" />
-    <button @click="addGoals">Add Goal</button>
-    <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
-    <ul v-else>
-      <li v-for="(goal, index) in goals"
-        :key="goal"
-        @click="removeGoal(index)">
-        <p>{{ goal }}</p>
-        <input type="text"
-          @click.stop />
-      </li>
+      v-model="enteredTaskValue">
+    <button @click="addTask">Add Task</button>
+
+    <ul>
+      <!-- 2) Output the list of tasks here -->
+      <li v-for="task in tasks"
+        :key="task"
+        v-show="listVisibility">{{ task }}</li>
     </ul>
+    <!-- 3) When the below button is pressed, the list should be shown or hidden -->
+    <!-- BONUS: Also update the button caption -->
+    <button @click="toggleListVisibility">{{ listVisibilityButton }}</button>
   </section>
 </body>
 
