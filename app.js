@@ -1,10 +1,18 @@
 const app = Vue.createApp({
   data() {
     return {
-      boxASelected: false,
-      boxBSelected: false,
-      boxCSelected: false,
-    };
+      inputA: '',
+      inputB: '',
+      visible: true,
+    }
+  },
+  computed: {
+    styleA() {
+      return this.inputA === 'user1' ? 'user1' : this.inputA === 'user2' ? 'user2' : '';
+    },
+    styleB() {
+      return this.visible ? 'visible' : 'hidden';
+    }
   },
   computed: {
     computedA() {
@@ -12,16 +20,10 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    selectBox(box) {
-      if (box === 'A') {
-        this.boxASelected = !thix.boxASelected;
-      } else if (box === 'B') {
-        this.boxBSelected = !thix.boxBSelected;
-      } else if (box === 'C') {
-        this.boxCSelected = !thix.boxCSelected;
-      }
+    styleButtonB() {
+      this.visible = !this.visible;
     }
   }
 })
 
-app.mount('#styling');
+app.mount('#assignment');
