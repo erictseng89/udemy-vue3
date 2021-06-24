@@ -23,7 +23,24 @@ methods: {
   },
 }
 ```
+## Declaring emits in the child component's root components.
+```js
+/**
+ * The 'emits' attribute should also be declared in the child component's root component.
+ */
+emits: ["toggle-friend-favourite"],
 
+/**
+ * Like props, emits can also be an object of objects in order to validate the usage of
+ * the emit event. The testing function should take the same arguments that the $emit()
+ * passes to the parent component.
+ */
+emits: {
+  "toggle-friend-favourite": function(id) {
+    return id ? true : false;
+  }
+}
+```
 ## array.prototype.find()
 
 Array.prototype.find()
@@ -40,10 +57,6 @@ friend element is an object that has an id. In the callback function, the friend
 is compared to the passed 'friendID'. If the 'id' of that specific 'friend'
 matches, find() will return the pointer for that particular friend.id key/pair.
 ```js
-/**
- * The 'emits' attribute should also be declared in the child component's root component.
- */
-emits: ["toggle-friend-favourite"],
 
 methods: {
   toggleFavourite(friendID) {

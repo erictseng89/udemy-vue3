@@ -17,7 +17,7 @@ import App from './App.vue';
  * Importing a component
  */
 import FriendContact from './components/FriendContact.vue';
-
+import AddFriendForm from './components/AddFriendForm.vue';
 /**
  * Creating the Vue app instance
  */
@@ -27,6 +27,7 @@ const app = createApp(App);
  * Adding a new component to the app from the ./components/ directory.
  */
 app.component('friend-contact', FriendContact);
+app.component('add-friend-form', AddFriendForm);
 
 /**
  * Mounting the application in the HTML file.

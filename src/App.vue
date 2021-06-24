@@ -8,7 +8,11 @@
           v-bind="friend"
           :key="friend.id"
           @toggle-friend-favourite="toggleFavourite"
+          @delete-friend="deleteFriendWithFilter"
         ></friend-contact>
+      </li>
+      <li>
+        <add-friend-form @added-friend="addFriend"></add-friend-form>
       </li>
     </ul>
   </section>
@@ -67,6 +71,23 @@ export default {
         (friend) => friend.id === friendID
       );
       selectedFriend.isFavourite = !selectedFriend.isFavourite;
+    },
+    addFriend(name, phoneNumber, emailAddress, isFavourite) {
+      const newFriend = {
+        id: new Date().toISOString(),
+        name: name,
+        phoneNumber: phoneNumber,
+        emailAddress: emailAddress,
+        isFavourite: isFavourite,
+      };
+      this.friends.push(newFriend);
+    },
+    deleteFriendWithFilter(id) {
+      this.friends = this.friends.filter((friend) => friend.id !== id);
+    },
+    deleteFriend(id) {
+      const friendIndex = this.friends.findIndex((friend) => friend.id === id);
+      this.friends.splice(friendIndex, 1);
     },
   },
 };
@@ -137,5 +158,19 @@ header {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+#app input {
+  font: inherit;
+  padding: 0.15rem;
+}
+#app label {
+  font-weight: bold;
+  margin-right: 1rem;
+  width: 7rem;
+  display: inline-block;
+}
+#app form div {
+  margin: 1rem 0;
 }
 </style>

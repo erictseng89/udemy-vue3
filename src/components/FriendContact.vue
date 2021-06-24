@@ -4,6 +4,7 @@
     {{ detailsAreVisible ? "Hide Details" : "Show Details" }}
   </button>
   <button @click="toggleFavourite">Toggle favourite</button>
+  <button @click="deleteContact">Delete Contact</button>
   <ul v-if="detailsAreVisible">
     <li><strong>Phone Number: </strong>{{ phoneNumber }}</li>
     <li><strong>Email: </strong>{{ emailAddress }}</li>
@@ -23,7 +24,7 @@ export default {
   /**
    * The 'emits' attribute should also be declared in the child component's root component.
    */
-  emits: ["toggle-friend-favourite"],
+  emits: ["toggle-friend-favourite", "delete-friend"],
   props: {
     id: {
       type: String,
@@ -53,7 +54,7 @@ export default {
 
   data() {
     return {
-      detailsAreVisible: true,
+      detailsAreVisible: false,
     };
   },
   methods: {
@@ -64,6 +65,9 @@ export default {
       // Should always be kebab-case. This is because the event-listener will be in the
       // template portion of the parent component.
       this.$emit("toggle-friend-favourite", this.id);
+    },
+    deleteContact() {
+      this.$emit("delete-friend", this.id);
     },
   },
 };
