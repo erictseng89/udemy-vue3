@@ -3,7 +3,22 @@
   <section>
     <ul>
       <li>
-        <friend-contact></friend-contact>
+        <!-- <friend-contact
+          name="ted"
+          phone-number="12412129412"
+          email-address="tiny@ted.com"
+          :is-favourite="true"
+        ></friend-contact>
+        <friend-contact
+          name="rex"
+          phone-number="14191242480"
+          email-address="tiny@rex.com"
+        ></friend-contact> -->
+        <friend-contact
+          v-for="friend in friends"
+          v-bind="friend"
+          :key="friend.id"
+        ></friend-contact>
       </li>
     </ul>
   </section>
@@ -29,13 +44,13 @@ export default {
           id: "jane",
           name: "huge jane",
           phoneNumber: "1412481902",
-          email: "tiny@jane.com",
+          emailAddress: "tiny@jane.com",
         },
         {
           id: "ted",
           name: "tiny ted",
           phoneNumber: "1892471894",
-          email: "tiny@ted.com",
+          emailAddress: "tiny@ted.com",
         },
       ],
     };
