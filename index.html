@@ -18,16 +18,40 @@
 
 <body>
   <header>
-    <h1>Vue Behind The Scenes</h1>
+    <h1>FriendList</h1>
   </header>
   <section id="app">
-    <h2>How Vue Works</h2>
-    <input type="text"
-      ref="textBox">
-    <button @click="setText">Set Text</button>
-    <p>{{pmessage }}</p>
-  </section>
+    <ul>
+      <!-- <li>
+        <h2>Manuel Lorenz</h2>
+        <button>Show Details</button>
+        <ul>
+          <li><strong>Phone:</strong> 01234 5678 991</li>
+          <li><strong>Email:</strong> manuel@localhost.com</li>
+        </ul>
+      </li>
+      <li>
+        <h2>Julie Jones</h2>
+        <button>Show Details</button>
+        <ul>
+          <li><strong>Phone:</strong> 09876 543 221</li>
+          <li><strong>Email:</strong> julie@localhost.com</li>
+        </ul>
+      </li> -->
 
+      <li v-for="friend in friends">
+
+        <h2>{{ friend.name }}</h2>
+        <button>Show Details</button>
+        <ul>
+          <li><strong>Phone: </strong>{{ friend.phoneNumber }}</li>
+          <li><strong>Email: </strong>{{ friend.email }}</li>
+        </ul>
+
+      </li>
+      <friend-contact></friend-contact>
+    </ul>
+  </section>
 </body>
 
 </html>

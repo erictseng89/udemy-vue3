@@ -1,50 +1,53 @@
-// const app = Vue.createApp({
-//   data() {
-//     return {
-//       currentUserInput: '',
-//       message: 'Vue is great!',
-//     };
-//   },
-//   methods: {
-//     saveInput(event) {
-//       this.currentUserInput = event.target.value;
-//     },
-//     setText() {
-//       this.message = this.currentUserInput;
-//     },
-//   },
-// });
-
-// const user = {
-//   firstName: 'Jane',
-//   lastName: 'Doe',
-//   email: 'john@doe.com'
-// };
-
-// const handler = {
-//   set(target, key, value) {
-//     if (key === 'lastName') {
-//       target.email = target.email + value;
-//     };
-//     target.lastName = value;
-//   }
-// };
-// let proxyUser = new Proxy(user, handler);
-
-// proxyUser.lastName = 'Tree';
-
-// console.log(proxyUser.email);
-
-
 const app = Vue.createApp({
   data() {
     return {
-      message: 'hello',
+      friends: [
+        {
+          name: 'Manuel Lorenz',
+          phoneNumber: '01234 5678 991',
+          email: 'manuel@localhost.com'
+        },
+        {
+          name: 'Julie Jones',
+          phoneNumber: '09876 543 221',
+          email: 'julie@localhost.com'
+        }
+      ]
+    }
+  }
+})
+
+app.component('friend-contact', {
+  /**
+   * Since components do not 'mount' and hence cannot obtain HTML information, they are
+   * required to input their own html. In this particular instance, it is better to use
+   * the ` symbol for the string.
+   */
+  template: `
+  <li>
+    <h2>{{ friend.name }}</h2>
+    <button @click="showFriendDetails">Show Details</button>
+    <ul v-if="detailsVisibility">
+    <li><strong>Phone: </strong>{{ friend.phoneNumber }}</li>
+    <li><strong>Email: </strong>{{ friend.email }}</li>
+    </ul>
+  </li>
+  `,
+  data() {
+    return {
+      detailsVisibility: true,
+      friend: {
+        name: 'Manuel Lorenz',
+        phoneNumber: '01234 5678 991',
+        email: 'manuel@localhost.com'
+      }
     }
   },
   methods: {
-    setText() {
-      this.message = this.$refs.textBox.value;
+    showFriendDetails() {
+      this.detailsVisibility = !this.detailsVisibility;
     }
   }
-}).mount('#app');
+})
+
+app.mount('#app')
