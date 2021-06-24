@@ -3,21 +3,11 @@
   <section>
     <ul>
       <li>
-        <!-- <friend-contact
-          name="ted"
-          phone-number="12412129412"
-          email-address="tiny@ted.com"
-          :is-favourite="true"
-        ></friend-contact>
-        <friend-contact
-          name="rex"
-          phone-number="14191242480"
-          email-address="tiny@rex.com"
-        ></friend-contact> -->
         <friend-contact
           v-for="friend in friends"
           v-bind="friend"
           :key="friend.id"
+          @toggle-friend-favourite="toggleFavourite"
         ></friend-contact>
       </li>
     </ul>
@@ -45,15 +35,39 @@ export default {
           name: "huge jane",
           phoneNumber: "1412481902",
           emailAddress: "tiny@jane.com",
+          isFavourite: true,
         },
         {
           id: "ted",
           name: "tiny ted",
           phoneNumber: "1892471894",
           emailAddress: "tiny@ted.com",
+          isFavourite: false,
         },
       ],
     };
+  },
+  methods: {
+    /**
+     * ! Array.prototype.find()
+     * * find(element, index = null, array = null) => { testing function }
+     *   find() returns the value of the first element in the array that satisfies the
+     *   provided testing function. The 'element' is any name that represents an
+     *   individual element of the array. The 'index' is an optional argument if the index
+     *   of the array is required in the testing function. The 'array' is the array in
+     *   which to find in, it is not required if the find is called on the array itself.
+     *
+     * In this example, the 'friends' array will have individual 'friend' elements. Each
+     * friend element is an object that has an id. In the callback function, the friend.id
+     * is compared to the passed 'friendID'. If the 'id' of that specific 'friend'
+     * matches, find() will return the pointer for that particular friend.
+     */
+    toggleFavourite(friendID) {
+      const selectedFriend = this.friends.find(
+        (friend) => friend.id === friendID
+      );
+      selectedFriend.isFavourite = !selectedFriend.isFavourite;
+    },
   },
 };
 </script>

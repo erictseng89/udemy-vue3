@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ name }} {{ friendIsFavourite ? "(Favorite)" : "" }}</h2>
+  <h2>{{ name }} {{ isFavourite ? "(Favorite)" : "" }}</h2>
   <button @click="toggleDetails">
     {{ detailsAreVisible ? "Hide Details" : "Show Details" }}
   </button>
@@ -20,7 +20,15 @@
 
 <script>
 export default {
+  /**
+   * The 'emits' attribute should also be declared in the child component's root component.
+   */
+  emits: ["toggle-friend-favourite"],
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -46,7 +54,6 @@ export default {
   data() {
     return {
       detailsAreVisible: true,
-      friendIsFavourite: this.isFavourite,
     };
   },
   methods: {
@@ -54,7 +61,9 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFavourite() {
-      this.friendIsFavourite = !this.friendIsFavourite;
+      // Should always be kebab-case. This is because the event-listener will be in the
+      // template portion of the parent component.
+      this.$emit("toggle-friend-favourite", this.id);
     },
   },
 };
