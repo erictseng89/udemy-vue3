@@ -1,16 +1,21 @@
 <template>
-  <section>
-    <h2>Available Badges</h2>
-    <ul>
-      <li>
-        <base-badge type="admin" caption="ADMIN"></base-badge>
-      </li>
-      <li>
-        <base-badge type="author" caption="AUTHOR"></base-badge>
-      </li>
-    </ul>
-  </section>
+  <base-card>
+    <template v-slot:default="{ names }">
+      <ul>
+        <li>
+          <base-badge type="admin" caption="ADMIN"></base-badge>
+        </li>
+        <li>
+          <base-badge type="author" caption="AUTHOR"></base-badge>
+        </li>
+        <li v-for="person in names" :key="person">{{ person }}</li>
+      </ul>
+    </template>
+  </base-card>
 </template>
+
+<script>
+</script>
 
 <style scoped>
 section h2 {

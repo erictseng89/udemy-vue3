@@ -1,9 +1,13 @@
 ## scoped - restricting styling
-By default styling the main App.vue will extend to all child components, as well as
-overwriting any styling those components will have. In order to prevent parent components
-from affecting child components. We can add a 'scoped' attribute to the <style></style>
-tag in the component layout. This will restrict the styling to only the current component
-and not extend to child components.
+By default, styling with the <style></style> is global by all components. Just like a
+vanilla stylesheet, the nature of the cascading style is that if there are conflicts, the
+later style will overwrite the former style. This means that in the event of a conflict
+global styles in the lower level child components will overwrite the styles from the main
+components.
+
+We can add a 'scoped' attribute to the <style></style> tag in the component layout. This
+will restrict the styling to only the current component and not overwrite other
+components.
 
 ```html
 <style scoped>
