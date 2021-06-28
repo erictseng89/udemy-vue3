@@ -3,15 +3,15 @@
     <form @submit.prevent="addedResource">
       <div>
         <label for="title"><strong>Title</strong></label>
-        <input type="text" v-model="title" />
+        <input type="text" ref="title" />
       </div>
       <div>
         <label for="description"><strong>Description</strong></label>
-        <input type="text" v-model="description" />
+        <textarea type="text" ref="description" rows="3"></textarea>
       </div>
       <div>
         <label for="link"><strong>Link</strong></label>
-        <input type="url" v-model="link" />
+        <input type="url" ref="link" />
       </div>
       <button type="submit">Add Resource</button>
     </form>
@@ -33,19 +33,23 @@
 export default {
   data() {
     return {
-      title: "",
-      description: "",
-      link: "",
       incorrectInput: false,
     };
   },
+  inject: ["addResource"],
   methods: {
     addedResource() {
-      if (this.title === "" || this.description === "") {
-        console.log("incorrect input");
+      if (
+        this.$refs.title.value.trim() === "" ||
+        this.$refs.description.value.trim() === ""
+      ) {
         this.incorrectInput = true;
       } else {
-        this.$emit("add-resource", this.title, this.description, this.link);
+        this.addResource(
+          this.$refs.title.value,
+          this.$refs.description.value,
+          this.$refs.link.value
+        );
       }
     },
     closeModal() {

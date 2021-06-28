@@ -7,11 +7,7 @@
       :activeTab="activeTab"
     ></selection-tab>
     <keep-alive>
-      <component
-        :is="activeTab"
-        :list="resourceList"
-        @add-resource="addResource"
-      ></component>
+      <component :is="activeTab"></component>
     </keep-alive>
   </main>
 </template>
@@ -67,6 +63,7 @@ export default {
         link: link,
       };
       this.resourceList.push(newResource);
+      this.activeTab = "stored-resources";
     },
     changeContent(tagName) {
       this.activeTab = tagName;
@@ -77,6 +74,8 @@ export default {
   },
   provide() {
     return {
+      addResource: this.addResource,
+      list: this.resourceList,
       deleteResource: this.deleteResource,
     };
   },

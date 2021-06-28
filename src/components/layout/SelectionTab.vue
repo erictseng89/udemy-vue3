@@ -34,7 +34,8 @@ button {
   padding: 0.5rem;
   margin: 0;
 }
-button:hover {
+button:hover,
+button:focus {
   background-color: hsl(290, 56%, 64%);
   color: white;
   /* border: ivory 2px solid; */
